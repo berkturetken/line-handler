@@ -1,4 +1,20 @@
-# Getting Started with Create React App
+# Text Line Joiner
+
+A modern React application that joins broken lines of text while preserving paragraph breaks.
+
+![Text Line Joiner](https://via.placeholder.com/800x400?text=Text+Line+Joiner)
+
+## Features
+
+- Join broken lines of text while preserving paragraph structure
+- Clean, modern user interface
+- Dark mode support
+- Responsive design
+- Easy to use
+
+## How It Works
+
+The app uses a regular expression to identify line breaks within paragraphs and replaces them with spaces, while preserving actual paragraph breaks (double line breaks).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

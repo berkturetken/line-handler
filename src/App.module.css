@@ -1,0 +1,117 @@
+.darkBody {
+  background-color: #121212;
+  color: #e0e0e0;
+  transition: background-color 0.3s ease;
+}
+
+.container {
+  font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, 'Helvetica Neue', sans-serif;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.darkMode {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.themeToggle {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+}
+
+.themeButton {
+  background-color: transparent;
+  border: 1px solid #e1e4e8;
+  border-radius: 20px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.darkMode .themeButton {
+  border-color: #444;
+  color: #e0e0e0;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #2a2a72;
+  font-weight: 600;
+  font-size: 1.8rem;
+  transition: color 0.3s ease;
+}
+
+.darkMode .header {
+  color: #7f7fde;
+}
+
+.textarea {
+  width: 100%;
+  height: 200px;
+  margin-bottom: 20px;
+  resize: none;
+  padding: 15px;
+  border: 1px solid #e1e4e8;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  color: #333333;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: #2a2a72;
+  box-shadow: 0 0 0 3px rgba(42, 42, 114, 0.1);
+}
+
+.darkMode .textarea {
+  background-color: #2d2d2d;
+  color: #e0e0e0;
+  border-color: #444;
+}
+
+.darkMode .textarea:focus {
+  border-color: #4a4a9c;
+  box-shadow: 0 0 0 3px rgba(74, 74, 156, 0.2);
+}
+
+.button {
+  padding: 12px 24px;
+  background-color: #2a2a72;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto 30px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.button:hover {
+  background-color: #1a1a62;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.darkMode .button {
+  background-color: #4a4a9c;
+}
+
+.darkMode .button:hover {
+  background-color: #5a5aac;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
