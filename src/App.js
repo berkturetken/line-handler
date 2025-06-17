@@ -16,9 +16,18 @@ function App() {
   }, [darkMode]);
 
   const joinLines = () => {
-    // This regex matches a non-newline character followed by a newline followed by a non-newline character
-    // and replaces it with the first character + space + second character
-    const result = inputText.replace(/([^\n])\n([^\n])/g, '$1 $2');
+    // Split the text into paragraphs (empty lines as separators)
+    const paragraphs = inputText.split(/\n\n+/);
+    
+    // Process each paragraph separately
+    const processedParagraphs = paragraphs.map(paragraph => {
+      // Only join lines within a paragraph that don't end with punctuation
+      return paragraph.replace(/([^.!?])\n/g, '$1 ');
+    });
+    
+    // Join the paragraphs back with double newlines
+    const result = processedParagraphs.join('\n\n');
+    
     setOutputText(result);
   };
 
