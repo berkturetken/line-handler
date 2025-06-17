@@ -7,8 +7,8 @@ EMAIL_FOR_THIS_REPO="berkturetken1997@hotmail.com"
 CURRENT_EMAIL=$(git config user.email)
 
 if [ "$CURRENT_EMAIL" != "$EMAIL_FOR_THIS_REPO" ]; then
-  echo "Setting user email to $EMAIL_FOR_THIS_REPO for this repository."
+  echo -e "Setting user email to $EMAIL_FOR_THIS_REPO for this repository.\n"
   git config user.email "$EMAIL_FOR_THIS_REPO"
 else
-  echo "User email is already set to $EMAIL_FOR_THIS_REPO."
+  echo -e "User email is already set to $EMAIL_FOR_THIS_REPO.\n"
 fi
