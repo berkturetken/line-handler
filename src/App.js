@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import styles from './App.module.css';
 
 function App() {
+  const MERGE_ALL = 'mergeAll';
+  const PRESERVE_PUNCTUATION = 'preservePunctuation';
+
   const [inputText, setInputText] = useState('');
   const [outputText, setOutputText] = useState('');
   const [darkMode, setDarkMode] = useState(false);
-  
-  // Apply dark mode class to the body element
+  const [processingMode, setProcessingMode] = useState(MERGE_ALL);
+
   useEffect(() => {
     if (darkMode) {
       document.body.classList.add(styles.darkBody);
@@ -18,11 +21,18 @@ function App() {
   const joinLines = () => {
     // Split the text into paragraphs (empty lines as separators)
     const paragraphs = inputText.split(/\n\n+/);
-    
-    // Process each paragraph separately
+
     const processedParagraphs = paragraphs.map(paragraph => {
-      // Only join lines within a paragraph that don't end with punctuation
-      return paragraph.replace(/([^.!?])\n/g, '$1 ');
+      if (processingMode === MERGE_ALL) {
+        // Join all lines within a paragraph regardless of punctuation
+        return paragraph.replace(/\n/g, ' ');
+      }
+      else if (processingMode === PRESERVE_PUNCTUATION) {
+        // Only join lines within a paragraph that don't end with dot, exclamation mark, or question mark
+        return paragraph.replace(/([^.!?])\n/g, '$1 ');
+      } else {
+        return "Something off is going on!";
+      }
     });
     
     // Join the paragraphs back with double newlines
@@ -42,6 +52,18 @@ function App() {
         </button>
       </div>
       <h1 className={styles.header}>Text Line Joiner</h1>
+      <div className={styles.processingOptions}>
+        <label htmlFor="processingMode">Processing Mode:</label>
+        <select 
+          id="processingMode" 
+          className={styles.select}
+          value={processingMode} 
+          onChange={(e) => setProcessingMode(e.target.value)}
+        >
+          <option value={MERGE_ALL}>Merge All Lines (ideal for one paragraph)</option>
+          <option value={PRESERVE_PUNCTUATION}>Preserve Sentence Breaks</option>
+        </select>
+      </div>
       <p>Paste text with broken lines:</p>
       <textarea
         value={inputText}
