@@ -80,7 +80,7 @@ function App() {
         value={outputText}
         readOnly
         className={styles.textarea}
-        placeholder="Your joined text will appear here"
+        placeholder="Your joined text will appear here..."
       />
     </div>
   );
