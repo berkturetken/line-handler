@@ -138,3 +138,6 @@ dist
 
 # 1Password
 .op
+
+# GitHub
+.github/workflows/manual-deploy.yaml
