@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import styles from './App.module.css';
+import React, { useState, useEffect } from "react";
+import styles from "./App.module.css";
 
 function App() {
-  const MERGE_ALL = 'mergeAll';
-  const PRESERVE_PUNCTUATION = 'preservePunctuation';
+  const MERGE_ALL = "mergeAll";
+  const PRESERVE_PUNCTUATION = "preservePunctuation";
 
-  const [inputText, setInputText] = useState('');
-  const [outputText, setOutputText] = useState('');
+  const [inputText, setInputText] = useState("");
+  const [outputText, setOutputText] = useState("");
   const [darkMode, setDarkMode] = useState(false);
   const [processingMode, setProcessingMode] = useState(MERGE_ALL);
 
@@ -22,45 +22,46 @@ function App() {
     // Split the text into paragraphs (empty lines as separators)
     const paragraphs = inputText.split(/\n\n+/);
 
-    const processedParagraphs = paragraphs.map(paragraph => {
+    const processedParagraphs = paragraphs.map((paragraph) => {
       if (processingMode === MERGE_ALL) {
         // Join all lines within a paragraph regardless of punctuation
-        return paragraph.replace(/\n/g, ' ');
-      }
-      else if (processingMode === PRESERVE_PUNCTUATION) {
+        return paragraph.replace(/\n/g, " ");
+      } else if (processingMode === PRESERVE_PUNCTUATION) {
         // Only join lines within a paragraph that don't end with dot, exclamation mark, or question mark
-        return paragraph.replace(/([^.!?])\n/g, '$1 ');
+        return paragraph.replace(/([^.!?])\n/g, "$1 ");
       } else {
         return "Something off is going on!";
       }
     });
-    
+
     // Join the paragraphs back with double newlines
-    const result = processedParagraphs.join('\n\n');
-    
+    const result = processedParagraphs.join("\n\n");
+
     setOutputText(result);
   };
 
   return (
-    <div className={`${styles.container} ${darkMode ? styles.darkMode : ''}`}>
+    <div className={`${styles.container} ${darkMode ? styles.darkMode : ""}`}>
       <div className={styles.themeToggle}>
-        <button 
-          onClick={() => setDarkMode(!darkMode)} 
+        <button
+          onClick={() => setDarkMode(!darkMode)}
           className={styles.themeButton}
         >
-          {darkMode ? '☀️ Light' : '🌙 Dark'}
+          {darkMode ? "☀️ Light" : "🌙 Dark"}
         </button>
       </div>
       <h1 className={styles.header}>Text Line Joiner</h1>
       <div className={styles.processingOptions}>
         <label htmlFor="processingMode">Processing Mode:</label>
-        <select 
-          id="processingMode" 
+        <select
+          id="processingMode"
           className={styles.select}
-          value={processingMode} 
+          value={processingMode}
           onChange={(e) => setProcessingMode(e.target.value)}
         >
-          <option value={MERGE_ALL}>Merge All Lines (ideal for one paragraph)</option>
+          <option value={MERGE_ALL}>
+            Merge All Lines (ideal for one paragraph)
+          </option>
           <option value={PRESERVE_PUNCTUATION}>Preserve Sentence Breaks</option>
         </select>
       </div>
