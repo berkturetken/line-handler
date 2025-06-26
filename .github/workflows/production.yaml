@@ -15,7 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        # more secure: an example of how to use SHA values associated with the action version
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
