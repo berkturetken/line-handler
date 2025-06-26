@@ -53,7 +53,7 @@ git config push.autoSetupRemote true
 
 
 ### Configuring pre-commit hook
-cp hooks/example-hook-for-pre-commit.sh .git/hooks/pre-commit
+cp githooks/example-hook-for-pre-commit.sh .git/hooks/pre-commit
 
 
 echo -e "\n✅ Repository configuration completed successfully ⬇️\n"
