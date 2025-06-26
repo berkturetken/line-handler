@@ -14,7 +14,7 @@ on:
         default: 'prod'
         type: choice
         options: # vercel provides three environments: local, preview, and production
-          - prod
+          - production
           - preview
 
 jobs:
