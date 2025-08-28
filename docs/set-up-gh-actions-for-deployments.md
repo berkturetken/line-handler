@@ -1,5 +1,12 @@
 # How to set GitHub actions for deployments and add required values from Vercel as secrets in GitHub?
 
+> Currently, the GitHub Actions setup does the exact same thing as Vercel was doing before for the deployments. I mainly had those changes for two reasons:
+
+> 1. Provides a more realistic and enterprise setup since GitHub Enterprise Server (GHES) cannot use Vercel's built-in Git integration.
+> 2. Gives more control over the deployment. For example, current behaviour (i.e., having deployments for each push to main) can easily be configured.
+
+<br>
+
 - Install Vercel CLI and run `vercel login` (optional)
 - Run `vercel link` to create a new Vercel project when you're inside the project folder
   - Type `Y` to **"<path-to-the-project-folder>"?**
