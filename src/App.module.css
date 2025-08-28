@@ -101,10 +101,22 @@
   transition: all 0.2s ease;
 }
 
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: #888; /* or any muted color for dark mode */
+}
+
 .button:hover {
   background-color: #1a1a62;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.centeredMessage {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
 }
 
 .darkMode .button {
