@@ -9,6 +9,7 @@ function App() {
   const [outputText, setOutputText] = useState("");
   const [darkMode, setDarkMode] = useState(false);
   const [processingMode, setProcessingMode] = useState(MERGE_ALL);
+  const [copySuccess, setCopySuccess] = useState("");
 
   useEffect(() => {
     if (darkMode) {
@@ -39,6 +40,17 @@ function App() {
 
     setOutputText(result);
   };
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(outputText);
+      setCopySuccess("Copied!")
+      setTimeout(() => setCopySuccess(""), 2000);
+    } catch (err) {
+      setCopySuccess("Failed to copy!");
+      setTimeout(() => setCopySuccess(""), 2000);
+    }
+  }
 
   return (
     <div className={`${styles.container} ${darkMode ? styles.darkMode : ""}`}>
@@ -82,6 +94,16 @@ function App() {
         className={styles.textarea}
         placeholder="Your joined text will appear here..."
       />
+      <button
+        className={styles.button}
+        onClick={handleCopy}
+        disabled={!outputText}
+      >
+        Copy
+      </button>
+      {copySuccess && (
+        <span className={styles.centeredMessage} style={{ color: "green" }}>{copySuccess}</span>
+      )}
     </div>
   );
 }
