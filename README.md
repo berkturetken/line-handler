@@ -2,7 +2,7 @@
 
 A modern React application that joins broken lines of text while preserving paragraph breaks.
 
-> https://line-handler-pi.vercel.app/
+🔗 **Live Demo:** https://berkturetken.github.io/line-handler/
 
 ## How to set up the development environment?
 - Make the *setup-repo.sh* script executable: `chmod 744 setup-repo.sh`
@@ -18,6 +18,23 @@ A modern React application that joins broken lines of text while preserving para
 
 ## How It Works
 The app uses a regular expression to identify line breaks within paragraphs and replaces them with spaces, while preserving actual paragraph breaks (double line breaks).
+
+## Deployment
+
+This project is automatically deployed to GitHub Pages via GitHub Actions:
+- **Production deployments** trigger automatically on every push to the `main` branch
+- **Manual deployments** can be triggered via the Actions tab in GitHub
+
+### Deployment Setup
+1. Push changes to the `main` branch
+2. GitHub Actions workflow automatically builds and deploys to GitHub Pages
+3. Site is live at https://berkturetken.github.io/line-handler/
+
+### First-time Setup
+If setting up GitHub Pages for the first time:
+1. Go to repository **Settings** → **Pages**
+2. Under "Build and deployment", set **Source** to "GitHub Actions"
+3. Save and push to `main` to trigger deployment
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -70,8 +87,14 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/m
 ### Advanced Configuration
 This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
 ### `npm run build` fails to minify
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Learn More About CRA
+
+For more information about Create React App features:
+- [Code Splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- [Analyzing Bundle Size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- [Making a Progressive Web App](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- [Advanced Configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- [Deployment](https://facebook.github.io/create-react-app/docs/deployment)
