@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#4A90E2" rx="80"/>
+  <g transform="translate(128, 150)">
+    <!-- Left side - broken lines -->
+    <line x1="0" y1="40" x2="80" y2="40" stroke="white" stroke-width="16" stroke-linecap="round"/>
+    <line x1="0" y1="80" x2="60" y2="80" stroke="white" stroke-width="16" stroke-linecap="round"/>
+    <line x1="0" y1="120" x2="70" y2="120" stroke="white" stroke-width="16" stroke-linecap="round"/>
+    
+    <!-- Arrow in middle -->
+    <path d="M 120 80 L 160 80 L 145 65 M 160 80 L 145 95" 
+          stroke="white" stroke-width="16" stroke-linecap="round" 
+          stroke-linejoin="round" fill="none"/>
+    
+    <!-- Right side - joined line -->
+    <line x1="180" y1="80" x2="256" y2="80" stroke="white" stroke-width="16" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Small text at bottom -->
+  <text x="256" y="380" font-family="Arial, sans-serif" font-size="48" 
+        font-weight="bold" fill="white" text-anchor="middle">TLJ</text>
+</svg>
+
