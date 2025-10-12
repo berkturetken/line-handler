@@ -1,4 +1,4 @@
-# Text Line Joiner
+# Line Joiner
 
 A modern React application that joins broken lines of text while preserving paragraph breaks.
 
@@ -7,7 +7,7 @@ A modern React application that joins broken lines of text while preserving para
 ## How to set up the development environment?
 - Make the *setup-repo.sh* script executable: `chmod 744 setup-repo.sh`
 - Run the *setup-repo.sh* script: `./setup-repo.sh`
-- You're ready to go! Run `npm start` if you're interested in Text Line Joiner :)
+- You're ready to go! Run `npm start` if you're interested in Line Joiner :)
 
 ## Features
 - Join broken lines of text while preserving paragraph structure
