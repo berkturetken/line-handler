@@ -6,7 +6,7 @@ echo "Repo Setup"
 echo "============================"
 echo ""
 
-### Configuring Git Email for the Repository
+# Configuring Git email for the repo
 if [ -n "$CURRENT_EMAIL" ]; then
     echo "Current email is set to: $CURRENT_EMAIL"
 else
@@ -47,16 +47,14 @@ esac
 
 [ -n "$GIT_EMAIL" ] && git config user.email "$GIT_EMAIL"
 
-
-### Configuring Git Auto Setup Remote for Push
+# Configuring Git auto setup remote for pushing
 git config push.autoSetupRemote true
 
-
-### Configuring pre-commit hook
+# Configuring pre-commit hook
 cp githooks/example-hook-for-pre-commit.sh .git/hooks/pre-commit
 
-
-echo -e "\n✅ Repository configuration completed successfully ⬇️\n"
-echo "Email: $(git config user.email)"
-echo "Auto setup remote for push is enabled."
-echo "Pre-commit hook has been set up."
+echo -e "\n✅ Repository configuration completed successfully ⬇️"
+echo "|"
+echo "|--- Email: $(git config user.email)"
+echo "|--- Auto setup remote for push is enabled."
+echo "|--- Pre-commit hook has been set up."
