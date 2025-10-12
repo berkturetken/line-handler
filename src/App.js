@@ -9,17 +9,20 @@ function App() {
 
   const [inputText, setInputText] = useState("");
   const [outputText, setOutputText] = useState("");
-  const [darkMode, setDarkMode] = useState(false);
+  const [theme, setTheme] = useState("light"); // options: 'light', 'dark', 'pink'
   const [processingMode, setProcessingMode] = useState(MERGE_ALL);
   const [copySuccess, setCopySuccess] = useState("");
 
   useEffect(() => {
-    if (darkMode) {
+    document.body.classList.remove(styles.darkBody, styles.pinkBody); // Remove all theme classes first
+    
+    // Add the appropriate theme class
+    if (theme === "dark") {
       document.body.classList.add(styles.darkBody);
-    } else {
-      document.body.classList.remove(styles.darkBody);
+    } else if (theme === "pink") {
+      document.body.classList.add(styles.pinkBody);
     }
-  }, [darkMode]);
+  }, [theme]);
 
   useEffect(() => {
     /*
@@ -74,14 +77,21 @@ function App() {
   };
 
   return (
-    <div className={`${styles.container} ${darkMode ? styles.darkMode : ""}`}>
+    <div className={`${styles.container} ${theme === "dark" ? styles.darkMode : ""} ${theme === "pink" ? styles.pinkMode : ""}`}>
       <div className={styles.themeToggle}>
-        <button
-          onClick={() => setDarkMode(!darkMode)}
-          className={styles.themeButton}
-        >
-          {darkMode ? t('theme.light') : t('theme.dark')}
-        </button>
+        <div className={styles.themeSelector}>
+          <label htmlFor="theme">{t('theme.label')}:</label>
+          <select
+            id="theme"
+            className={styles.select}
+            value={theme}
+            onChange={(e) => setTheme(e.target.value)}
+          >
+            <option value="light">{t('theme.light')}</option>
+            <option value="dark">{t('theme.dark')}</option>
+            <option value="pink">{t('theme.pink')}</option>
+          </select>
+        </div>
         <div className={styles.languageSelector}>
           <label htmlFor="language">{t('language.label')}:</label>
           <select

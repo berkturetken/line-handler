@@ -4,6 +4,12 @@
   transition: background-color 0.3s ease;
 }
 
+.pinkBody {
+  background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+  color: #4a1942;
+  transition: background-color 0.3s ease;
+}
+
 .container {
   font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, 'Helvetica Neue', sans-serif;
   max-width: 800px;
@@ -21,6 +27,13 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
+.pinkMode {
+  background: linear-gradient(135deg, #ffffff 0%, #fce4ec 100%);
+  color: #4a1942;
+  box-shadow: 0 10px 30px rgba(233, 30, 99, 0.2);
+  border: 1px solid rgba(233, 30, 99, 0.1);
+}
+
 .themeToggle {
   display: flex;
   justify-content: space-between;
@@ -30,6 +43,13 @@
   flex-wrap: wrap;
 }
 
+.themeSelector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
 .languageSelector {
   display: flex;
   align-items: center;
@@ -37,20 +57,6 @@
   font-size: 14px;
 }
 
-.themeButton {
-  background-color: transparent;
-  border: 1px solid #e1e4e8;
-  border-radius: 20px;
-  padding: 8px 16px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: all 0.2s ease;
-}
-
-.darkMode .themeButton {
-  border-color: #444;
-  color: #e0e0e0;
-}
 
 .header {
   text-align: center;
@@ -63,6 +69,11 @@
 
 .darkMode .header {
   color: #7f7fde;
+}
+
+.pinkMode .header {
+  color: #c2185b;
+  text-shadow: 0 2px 4px rgba(233, 30, 99, 0.1);
 }
 
 .textarea {
@@ -95,6 +106,22 @@
 .darkMode .textarea:focus {
   border-color: #4a4a9c;
   box-shadow: 0 0 0 3px rgba(74, 74, 156, 0.2);
+}
+
+.pinkMode .textarea {
+  background-color: #ffffff;
+  color: #4a1942;
+  border-color: #f48fb1;
+}
+
+.pinkMode .textarea:focus {
+  border-color: #e91e63;
+  box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.15);
+}
+
+.pinkMode .textarea::placeholder {
+  color: #c2185b;
+  opacity: 0.5;
 }
 
 .button {
@@ -138,6 +165,21 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
+.pinkMode .button {
+  background: linear-gradient(135deg, #e91e63 0%, #c2185b 100%);
+  color: white;
+}
+
+.pinkMode .button:hover {
+  background: linear-gradient(135deg, #d81b60 0%, #ad1457 100%);
+  box-shadow: 0 4px 12px rgba(233, 30, 99, 0.4);
+}
+
+.pinkMode .button:disabled {
+  background: #f48fb1;
+  opacity: 0.6;
+}
+
 .processingOptions {
   display: flex;
   align-items: center;
@@ -171,4 +213,22 @@
 .darkMode .select:focus {
   border-color: #4a4a9c;
   box-shadow: 0 0 0 2px rgba(74, 74, 156, 0.2);
+}
+
+.pinkMode .select {
+  background-color: #ffffff;
+  color: #4a1942;
+  border-color: #f48fb1;
+}
+
+.pinkMode .select:focus {
+  border-color: #e91e63;
+  box-shadow: 0 0 0 2px rgba(233, 30, 99, 0.15);
+}
+
+.pinkMode .processingOptions label,
+.pinkMode .languageSelector label,
+.pinkMode p {
+  color: #880e4f;
+  font-weight: 500;
 }

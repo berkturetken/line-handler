@@ -10,8 +10,10 @@ const resources = {
         description: "Join broken lines of text while preserving paragraph breaks. A simple, modern tool for cleaning up fragmented text."
       },
       theme: {
+        label: "Theme",
         light: "☀️ Light",
-        dark: "🌙 Dark"
+        dark: "🌙 Dark",
+        pink: "💖 Pink"
       },
       processingMode: {
         label: "Processing Mode:",
@@ -46,8 +48,10 @@ const resources = {
         description: "Paragraf yapısını koruyarak bölünmüş satırları birleştirin. Parçalanmış metinleri temizlemek için basit, modern bir araç."
       },
       theme: {
+        label: "Tema",
         light: "☀️ Açık",
-        dark: "🌙 Koyu"
+        dark: "🌙 Koyu",
+        pink: "💖 Pembe"
       },
       processingMode: {
         label: "İşlem Modu:",
@@ -82,8 +86,10 @@ const resources = {
         description: "Verbinden Sie unterbrochene Textzeilen unter Beibehaltung von Absatzumbrüchen. Ein einfaches, modernes Tool zum Aufräumen fragmentierter Texte."
       },
       theme: {
+        label: "Design",
         light: "☀️ Hell",
-        dark: "🌙 Dunkel"
+        dark: "🌙 Dunkel",
+        pink: "💖 Rosa"
       },
       processingMode: {
         label: "Verarbeitungsmodus:",
