@@ -23,8 +23,18 @@
 
 .themeToggle {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 15px;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.languageSelector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
 }
 
 .themeButton {

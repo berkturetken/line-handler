@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import styles from "./App.module.css";
 
 function App() {
+  const { t, i18n } = useTranslation();
   const MERGE_ALL = "mergeAll";
   const PRESERVE_PUNCTUATION = "preservePunctuation";
 
@@ -18,6 +20,21 @@ function App() {
       document.body.classList.remove(styles.darkBody);
     }
   }, [darkMode]);
+
+  useEffect(() => {
+    /*
+      Things to update:
+      1. Update HTML lang attribute when language changes
+      2. Update page title
+      3. Update meta description
+    */
+    document.documentElement.lang = i18n.language; 
+    document.title = t('app.title'); 
+    const metaDescription = document.querySelector('meta[name="description"]'); 
+    if (metaDescription) {
+      metaDescription.setAttribute('content', t('app.description'));
+    }
+  }, [i18n.language, t]);
 
   const joinLines = () => {
     // Split the text into paragraphs (empty lines as separators)
@@ -44,13 +61,17 @@ function App() {
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(outputText);
-      setCopySuccess("Copied!")
+      setCopySuccess(t('messages.copied'))
       setTimeout(() => setCopySuccess(""), 2000);
     } catch (err) {
-      setCopySuccess("Failed to copy!");
+      setCopySuccess(t('messages.copyFailed'));
       setTimeout(() => setCopySuccess(""), 2000);
     }
   }
+
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  };
 
   return (
     <div className={`${styles.container} ${darkMode ? styles.darkMode : ""}`}>
@@ -59,12 +80,25 @@ function App() {
           onClick={() => setDarkMode(!darkMode)}
           className={styles.themeButton}
         >
-          {darkMode ? "☀️ Light" : "🌙 Dark"}
+          {darkMode ? t('theme.light') : t('theme.dark')}
         </button>
+        <div className={styles.languageSelector}>
+          <label htmlFor="language">{t('language.label')}:</label>
+          <select
+            id="language"
+            className={styles.select}
+            value={i18n.language}
+            onChange={(e) => changeLanguage(e.target.value)}
+          >
+            <option value="en">English</option>
+            <option value="tr">Türkçe</option>
+            <option value="de">Deutsch</option>
+          </select>
+        </div>
       </div>
-      <h1 className={styles.header}>Text Line Joiner</h1>
+      <h1 className={styles.header}>{t('app.title')}</h1>
       <div className={styles.processingOptions}>
-        <label htmlFor="processingMode">Processing Mode:</label>
+        <label htmlFor="processingMode">{t('processingMode.label')}</label>
         <select
           id="processingMode"
           className={styles.select}
@@ -72,34 +106,34 @@ function App() {
           onChange={(e) => setProcessingMode(e.target.value)}
         >
           <option value={MERGE_ALL}>
-            Merge All Lines (ideal for one paragraph)
+            {t('processingMode.mergeAll')}
           </option>
-          <option value={PRESERVE_PUNCTUATION}>Preserve Sentence Breaks</option>
+          <option value={PRESERVE_PUNCTUATION}>{t('processingMode.preservePunctuation')}</option>
         </select>
       </div>
-      <p>Paste text with broken lines:</p>
+      <p>{t('input.label')}</p>
       <textarea
         value={inputText}
         onChange={(e) => setInputText(e.target.value)}
         className={styles.textarea}
-        placeholder="Paste your text here..."
+        placeholder={t('input.placeholder')}
       />
       <button onClick={joinLines} className={styles.button}>
-        Join Lines
+        {t('buttons.joinLines')}
       </button>
-      <p>Result:</p>
+      <p>{t('output.label')}</p>
       <textarea
         value={outputText}
         readOnly
         className={styles.textarea}
-        placeholder="Your joined text will appear here..."
+        placeholder={t('output.placeholder')}
       />
       <button
         className={styles.button}
         onClick={handleCopy}
         disabled={!outputText}
       >
-        Copy
+        {t('buttons.copy')}
       </button>
       {copySuccess && (
         <span className={styles.centeredMessage} style={{ color: "green" }}>{copySuccess}</span>
