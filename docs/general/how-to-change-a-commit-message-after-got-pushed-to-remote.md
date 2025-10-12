@@ -1,6 +1,5 @@
 # How to change a commit message after it got pushed to remote?
 
-
 - `git rebase -i HEAD~N`: `N` refers to the last N commits.
 - An editor will be opened and you will see something like this at the top of the file:
     ```
