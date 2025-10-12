@@ -9,7 +9,7 @@ function App() {
 
   const [inputText, setInputText] = useState("");
   const [outputText, setOutputText] = useState("");
-  const [theme, setTheme] = useState("light"); // options: 'light', 'dark', 'pink'
+  const [theme, setTheme] = useState("dark"); // options: 'light', 'dark', 'pink'
   const [processingMode, setProcessingMode] = useState(MERGE_ALL);
   const [copySuccess, setCopySuccess] = useState("");
 
