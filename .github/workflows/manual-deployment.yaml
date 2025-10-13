@@ -11,43 +11,62 @@ on:
         options:
           - production
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
 # Allow only one concurrent deployment
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true # more efficient and faster with multiple rapid pushes since it cancels old deployments
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:  # Permissions of GITHUB_TOKEN
+      contents: read
+
     steps:
       - name: Checkout code
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
-          node-version: '18'
+          node-version: '20'
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --audit --audit-level=critical
+
+      # TODO: Start writing tests and remove continue-on-error: true because this defeats the purpose of having tests
+      - name: Run tests (if any)
+        run: npm test -- --passWithNoTests --watchAll=false
+        continue-on-error: true
 
       - name: Build
         run: npm run build
+        env:
+          CI: true
+          NODE_ENV: production
+
+      - name: Verify build output
+        run: |
+          if [ ! -d "build" ]; then
+            echo "Build directory not found!"
+            exit 1
+          fi
+          if [ ! -f "build/index.html" ]; then
+            echo "index.html not found in build!"
+            exit 1
+          fi
+          echo "Build verification passed ✓"
 
       - name: Setup Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4.0.0
         with:
           path: ./build
+          retention-days: 1
 
   deploy:
     environment:
@@ -55,7 +74,24 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
+    timeout-minutes: 10
+    
+    permissions:
+      contents: read
+      pages: write      # to deploy content to GitHub Pages
+      id-token: write   # required for OIDC auth when using actions/deploy-pages
+    
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
+
+      - name: Report deployment status
+        if: always()
+        run: |
+          if [ "${{ steps.deployment.outcome }}" == "success" ]; then
+            echo "✅ Manual deployment successful: ${{ steps.deployment.outputs.page_url }}"
+          else
+            echo "❌ Manual deployment failed"
+            exit 1
+          fi
