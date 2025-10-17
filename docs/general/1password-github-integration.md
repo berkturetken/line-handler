@@ -11,7 +11,9 @@
 
 ### Detailed Instructions
 - Install 1Password.
-- Install 1Password CLI from [here](https://developer.1password.com/docs/cli/get-started/). Check the version to verify you installed it: `op --version`
+- Install 1Password CLI from [here](https://developer.1password.com/docs/cli/get-started/). Check the version to verify you installed it: `op --version`.
+- Make sure to enable 1Password desktop app integration. Open 1Password app, click on *Settings*, go to *Developer* and toggle the *Integrate with 1Password CLI* option.
+- After enabling the app integration, you can enter any command and you'll be prompted to authenticate. For example, try `op vault list` to see all the vaults in your account.
 - Create a Personal Access Token (PAT) with necessary rights (`write:packages` and `repo` should be enough). The guide about how to do it is [here](https://docs.gitHub.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens). Configure the SSO (i.e., authorizing the token) if needed for your use case.
 - Trigger 1Password CLI configuration: `op plugin init gh`
     - First, select the PAT.
